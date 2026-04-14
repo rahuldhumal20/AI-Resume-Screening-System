@@ -1,13 +1,20 @@
 from langchain_groq import ChatGroq
 from dotenv import load_dotenv
-import os
+from chains.extraction_chain import get_extraction_chain
 
 load_dotenv()
 
-llm = ChatGroq(
-    model="llama3-70b-8192",  # best model on Groq
-    temperature=0
-)
+llm = ChatGroq(model="llama-3.3-70b-versatile", temperature=0)
 
-response = llm.invoke("Explain AI in one line")
-print(response.content)
+chain = get_extraction_chain(llm)
+
+resume = """
+John Doe
+Skills: Python, Machine Learning, SQL
+Worked 3 years as Data Analyst
+Used tools: Pandas, NumPy
+"""
+
+result = chain.invoke({"resume": resume})
+
+print(result)
