@@ -3,6 +3,7 @@ from dotenv import load_dotenv
 
 from chains.extraction_chain import get_extraction_chain
 from chains.matching_chain import get_matching_chain
+from chains.scoring_chain import get_scoring_chain
 
 load_dotenv()
 
@@ -14,8 +15,9 @@ llm = ChatGroq(
 # Chains
 extraction_chain = get_extraction_chain(llm)
 matching_chain = get_matching_chain(llm)
+scoring_chain = get_scoring_chain(llm)
 
-# Sample Resume
+# Resume
 resume = """
 John Doe
 Skills: Python, Machine Learning, SQL
@@ -36,14 +38,17 @@ Looking for a Data Scientist with:
 # Step 1: Extraction
 extracted = extraction_chain.invoke({"resume": resume})
 
-print("\n--- Extracted Data ---")
-print(extracted)
-
 # Step 2: Matching
 match_result = matching_chain.invoke({
     "candidate": extracted,
     "job_description": job_description
 })
 
-print("\n--- Matching Result ---")
-print(match_result)
+# Step 3: Scoring
+score_result = scoring_chain.invoke({
+    "candidate": extracted,
+    "matching": match_result
+})
+
+print("\n--- FINAL OUTPUT ---")
+print(score_result)
