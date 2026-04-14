@@ -1,0 +1,58 @@
+# 🔐 Environment variables
+.env
+.env.*
+
+# 🐍 Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# 📦 Virtual environment
+venv/
+env/
+.venv/
+
+# 🧪 Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# 🧾 Logs
+*.log
+
+# 📁 OS files
+.DS_Store
+Thumbs.db
+
+# 🛠 VS Code
+.vscode/
+
+# 🧠 LangSmith (optional local traces/logs)
+.langsmith/
+
+# 📦 Build / dist
+build/
+dist/
+*.egg-info/
+
+# 🧾 Temporary files
+*.tmp
+*.bak
+*.swp
+
+# 🔑 Secrets / API keys
+secrets.json
+
+# 🧪 Testing
+.coverage
+htmlcov/
+
+# 🧰 IDEs
+.idea/
+
+# 📊 Data files (optional - if large)
+data/
+*.csv
+*.json
+
+# 🚫 Node (if you add React later)
+node_modules/
