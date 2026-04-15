@@ -4,6 +4,7 @@ from dotenv import load_dotenv
 from chains.extraction_chain import get_extraction_chain
 from chains.matching_chain import get_matching_chain
 from chains.scoring_chain import get_scoring_chain
+from chains.explanation_chain import get_explanation_chain
 
 load_dotenv()
 
@@ -16,6 +17,7 @@ llm = ChatGroq(
 extraction_chain = get_extraction_chain(llm)
 matching_chain = get_matching_chain(llm)
 scoring_chain = get_scoring_chain(llm)
+explanation_chain = get_explanation_chain(llm)
 
 # Resume
 resume = """
@@ -50,5 +52,14 @@ score_result = scoring_chain.invoke({
     "matching": match_result
 })
 
-print("\n--- FINAL OUTPUT ---")
+# Step 4: Explanation
+final_explanation = explanation_chain.invoke({
+    "candidate": extracted,
+    "matching": match_result,
+    "score": score_result
+})
+
+print("\n--- FINAL RESULT ---")
 print(score_result)
+print("\n--- EXPLANATION ---")
+print(final_explanation)
