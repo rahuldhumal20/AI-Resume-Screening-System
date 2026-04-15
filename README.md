@@ -28,31 +28,6 @@ It simulates a **real-world recruiter pipeline** by:
 
 ---
 
-## 🧱 Project Structure
-
-AI Resume Screening System/
-│
-├── prompts/
-│ ├── extraction_prompt.py
-│ ├── matching_prompt.py
-│ ├── scoring_prompt.py
-│ ├── explanation_prompt.py
-│
-├── chains/
-│ ├── extraction_chain.py
-│ ├── matching_chain.py
-│ ├── scoring_chain.py
-│ ├── explanation_chain.py
-│
-├── resumes/ # Input PDF resumes
-├── main.py # Main pipeline
-├── .env # API keys
-├── requirements.txt
-└── README.md
-
-
----
-
 ## 🔄 Pipeline Architecture
 
 PDF Resume → Text Extraction → Skill Extraction → Matching → Scoring → Explanation
