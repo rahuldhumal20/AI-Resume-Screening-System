@@ -3,21 +3,21 @@ from langchain_core.prompts import PromptTemplate
 matching_prompt = PromptTemplate.from_template("""
 You are an AI recruiter.
 
-Compare the candidate's profile with the job description.
+Compare candidate with job description.
 
-Rules:
-- Only use provided data
-- Do NOT assume skills
-- Be strict and accurate
+Return ONLY valid JSON.
+Do NOT add explanation.
+Do NOT use markdown.
 
-Candidate Profile:
+Format:
+{{
+  "matched_skills": ["skill1", "skill2"],
+  "missing_skills": ["skill1", "skill2"]
+}}
+
+Candidate:
 {candidate}
 
 Job Description:
 {job_description}
-
-Output format:
-Matched Skills: []
-Missing Skills: []
-Match Summary:
 """)
